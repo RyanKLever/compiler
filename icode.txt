@@ -1,0 +1,244 @@
+                    FRAME     main                null                                              
+                    CALL      main                                                                  
+                    STOP                                                                            
+X3                  FUNC      X3                                                                    
+                    FRAME     DemoCStaticInit     this                DemoC() {}							// Semantics: DemxC
+                    CALL      DemoCStaticInit                                                       
+                    RETURN    this                                                                  
+                    RTN                                                                             
+M4                  FUNC      M4                                      public int mod(int i, int j) { // Syntax: static
+                    DIV       P5                  P6        T68       int k = i / j;                
+                    MOV       T68                 L7                                                
+                    MUL       P6                  L7        T69       k = i - j * k;                
+                    SUB       P5                  T69       T70                                     
+                    MOV       T70                 L7                                                
+                    RETURN    L7                                                                    
+                    RTN                                               }                             
+M8                  FUNC      M8                                      public int gcd(int a, int b) { // Syntax: static; Semantic: return int vs @:int
+                    EQ        P10                 N11       T71       if (b == 0) return a;         
+                    BF        T71                 LABEL1                                            
+                    RETURN    P9                                                                    
+LABEL1              FRAME     M4                  this                return gcd(b, mod(a, b));				// Semantics: not defined mod(int, int)
+                    PUSH      P9                                                                    
+                    PUSH      P10                                                                   
+                    CALL      M4                                                                    
+                    PEEK      T72                                                                   
+                    FRAME     M8                  this                                              
+                    PUSH      P10                                                                   
+                    PUSH      T72                                                                   
+                    CALL      M8                                                                    
+                    PEEK      T73                                                                   
+                    RETURN    T73                                                                   
+                    RTN                                               }                             
+M12                 FUNC      M12                                     public int fib(int k) {						// Semantics: it vs int
+                    EQ        P13                 N11       T74       if (k == 0) return 0;						// Syntax: retrn
+                    BF        T74                 LABEL2                                            
+                    RETURN    N11                                                                   
+                    JMP       LABEL3                                                                
+LABEL2              EQ        P13                 N14       T75       else if (k == 1) return 1;					// Semantics
+                    BF        T75                 LABEL4                                            
+                    RETURN    N14                                                                   
+                    JMP       LABEL3                                                                
+LABEL4              SUB       P13                 N14       T76       else return (fib(k - 1) + fib(k - 2));		// Syntax: ese; Semantics: fib(int, int), char - int, no fb(int)
+                    FRAME     M12                 this                                              
+                    PUSH      T76                                                                   
+                    CALL      M12                                                                   
+                    PEEK      T77                                                                   
+                    SUB       P13                 N15       T78                                     
+                    FRAME     M12                 this                                              
+                    PUSH      T78                                                                   
+                    CALL      M12                                                                   
+                    PEEK      T79                                                                   
+                    ADD       T77                 T79       T80                                     
+                    RETURN    T80                                                                   
+LABEL3              RTN                                               }                             
+M16                 FUNC      M16                                     {                             
+                    EQ        P17                 N14       T81       if(n==1)                      
+                    BF        T81                 LABEL6                                            
+                    RETURN    N14                                                                   
+LABEL6              SUB       P17                 N14       T82       result = fact(n-1) * n;       
+                    FRAME     M16                 this                                              
+                    PUSH      T82                                                                   
+                    CALL      M16                                                                   
+                    PEEK      T83                                                                   
+                    MUL       T83                 P17       T84                                     
+                    MOV       T84                 L18                                               
+                    RETURN    L18                                                                   
+                    RTN                                               }                             
+M19                 FUNC      M19                                                                   
+                    ADD       P20                 N14       T85       public int inc(int i) { return i + 1; }	// Syntax: static
+                    RETURN    T85                                     // Check here for Syntax and Semantic Errors
+                    RTN                                                                             
+DemoCStaticInit     FUNC      DemoCStaticInit                         class DemoC {                 
+                    RTN                                               }                             
+X26                 FUNC      X26                                     Bugs(int i, char c) {				// Syntax: ';' vs ',' ; Semantic: Buugs vs Bugs
+                    FRAME     BugsStaticInit      this                                              
+                    CALL      BugsStaticInit                                                        
+                    REF       T87                 V22       R88       this.i = i;						// Semantic: no d
+                    MOV       P27                 R88                                               
+                    REF       T89                 V23       R90       this.c = c;						// Semantic: no that, char = int
+                    MOV       P28                 R90                                               
+                    RETURN    this                                                                  
+                    RTN                                               }                             
+M29                 FUNC      M29                                     public int f() {}             
+                    RTN                                                                             
+M30                 FUNC      M30                                     public int gxg(int pa, Bugs pb, int pc) {  // yes
+                    FRAME     M29                 this                i = f(); // yes               
+                    CALL      M29                                                                   
+                    PEEK      T91                                                                   
+                    MOV       T91                 V22                                               
+                    FRAME     M30                 this                return gxg(1, this, 4); // yes
+                    PUSH      N14                                                                   
+                    PUSH      T92                                                                   
+                    PUSH      N34                                                                   
+                    CALL      M30                                                                   
+                    PEEK      T93                                                                   
+                    RETURN    T93                                                                   
+                    FRAME     M30                 this                gxg(-666, this, -13); // yes  
+                    PUSH      N35                                                                   
+                    PUSH      T94                                                                   
+                    PUSH      N36                                                                   
+                    CALL      M30                                                                   
+                    PEEK      T95                                                                   
+                    RTN                                               }                             
+M37                 FUNC      M37                                                                   
+                    REF       T96                 V24       R97       this.aifbwhile = aifbwhile;   
+                    MOV       P38                 R97                                               
+                    ADD       V22                 V22       T98       i = i + i;                    
+                    MOV       T98                 V22                                               
+                    RTN                                               }                             
+M40                 FUNC      M40                                     public void checkit() {					// Semantic: vod
+                    MUL       sizeOfChar          N42       N42       char[] cc = new char[1000];		// Syntax: 10a00
+                    NEW       N42                 R99                                               
+                    MOV       R99                 L41                                               
+                    MUL       sizeOfInt           N44       N44       int[] ii = new int[512];      
+                    NEW       N44                 R100                                              
+                    MOV       R100                L43                                               
+                    MUL       sizeOfPointer       N46       N46       Bugs[] ss = new Bugs[256];				// Semantic: Bug vs Bugs
+                    NEW       N46                 R101                                              
+                    MOV       R101                L45                                               
+                    AEF       L41                 N14       R102      cc[1] = cc[2];                
+                    AEF       L41                 N15       R103                                    
+                    MOV       R103                R102                                              
+                    AEF       L41                 N47       R104      cc[31] = c;   						// Semantic: char = @
+                    MOV       V23                 R104                                              
+                    AEF       L41                 N48       R105      cc[100] = cc[5 + i];						// Semantics: char = int
+                    ADD       N49                 V22       T106                                    
+                    AEF       L41                 T106      R107                                    
+                    MOV       R107                R105                                              
+                    AEF       L41                 N50       R108      cc[10] = c;                   
+                    MOV       V23                 R108                                              
+                    AEF       L43                 N14       R109      ii[1] = ii[1]; 							// Syntax: no index
+                    AEF       L43                 N14       R110                                    
+                    MOV       R110                R109                                              
+                    AEF       L43                 N34       R111      ii[4] = 5 + i;							// Semantic: Array i not defined
+                    ADD       N49                 V22       T112                                    
+                    MOV       T112                R111                                              
+                    AEF       L43                 N51       R113      ii[5000] = 5 + i;             
+                    ADD       N49                 V22       T114                                    
+                    MOV       T114                R113                                              
+                    MOV       L43                 L43                 ii = ii;								// Semantics: @:int = @:Bugs
+                    AEF       L43                 N11       R115      i = ii[0];                    
+                    MOV       R115                V22                                               
+                    AEF       L45                 N11       R116      ss[0] = new Bugs(7, 'c');			// Semantics: Insect, no Bugs(char, int, int)
+                    NEWI      13                  T117                                              
+                    FRAME     X26                 T117                                              
+                    PUSH      N52                                                                   
+                    PUSH      H53                                                                   
+                    CALL      X26                                                                   
+                    PEEK      T118                                                                  
+                    MOV       T118                R116                                              
+                    AEF       L45                 V22       R119      ss[i] = ss[i+1];              
+                    ADD       V22                 N14       T120                                    
+                    AEF       L45                 T120      R121                                    
+                    MOV       R121                R119                                              
+                    DIV       N52                 N54       T122      ss[i+7/3] = new Bugs(i, c); 			// Semantics: Bug vs Bugs
+                    ADD       V22                 T122      T123                                    
+                    AEF       L45                 T123      R124                                    
+                    NEWI      13                  T125                                              
+                    FRAME     X26                 T125                                              
+                    PUSH      V22                                                                   
+                    PUSH      V23                                                                   
+                    CALL      X26                                                                   
+                    PEEK      T126                                                                  
+                    MOV       T126                R124                                              
+                    RTN                                               return;								// Semantics: return @
+                    RTN                                               }                             
+BugsStaticInit      FUNC      BugsStaticInit                          class Bugs {								// Syntax 
+                    ADD       N14                 N14       T86       private int aifbwhile = 1 + 1;
+                    MOV       T86                 V24                                               
+                    RTN                                               }                             
+main                FUNC      main                                    void kxi2020 main() {				// Syntax: multiple
+                    MOV       N15                 L60                 int two = 2;						// Syntax: .0; Semantics: float
+                    WRITE     H62                                     cout << '>';							// Syntax: "
+                    READ      L55                                     cin >> k;								// Semantics: no x vs k
+                    WRITE     H63                                     cout << '\n';							// Syntax: "
+LABEL7              NE        L55                 N11       T127      while (k != 0) {							// Syntax: whle; Semantic: if requires bool
+                    BF        T127                LABEL8                                            
+                    LT        L55                 N11       T128      if (k < 0) {                  
+                    BF        T128                LABEL9                                            
+                    MUL       L55                 N64       T129      k = 5 + k * -1 - two;         
+                    SUB       T129                L60       T130                                    
+                    ADD       N49                 T130      T131                                    
+                    MOV       T131                L55                                               
+                    MOV       N11                 L59                 sum = 0;                      
+LABEL10             GT        L55                 N11       T132      while (k > 0) {               
+                    BF        T132                LABEL11                                           
+                    MOV       L55                 L56                 j = k;                        
+LABEL12             GT        L56                 N11       T133      while (j > 0) {               
+                    BF        T133                LABEL13                                           
+                    DIV       L56                 N54       T134      if ((j / 3) == 0) sum = sum + j;	// Syntax: iff
+                    EQ        T134                N11       T135                                    
+                    BF        T135                LABEL14                                           
+                    ADD       L59                 L56       T136                                    
+                    MOV       T136                L59                                               
+LABEL14             SUB       L56                 N14       T137      j = j - 1;                    
+                    MOV       T137                L56                                               
+                    JMP       LABEL12                                 }                             
+LABEL13             SUB       L55                 N14       T138      k = k - 1;                    
+                    MOV       T138                L55                                               
+                    JMP       LABEL10                                                               
+LABEL11             WRITE     L59                                     cout << (sum);				// Semantics: cout
+                    WRITE     H63                                     }                             
+                    JMP       LABEL15                                 else {                        
+LABEL9              FRAME     M16                 L61                 fa = dc.fact(k);					// Semantics: no fa
+                    PUSH      L55                                                                   
+                    CALL      M16                                                                   
+                    PEEK      T139                                                                  
+                    MOV       T139                L57                                               
+                    FRAME     M12                 L61                 fi = dc.fib(k);						// Semantics: no fi
+                    PUSH      L55                                                                   
+                    CALL      M12                                                                   
+                    PEEK      T140                                                                  
+                    MOV       T140                L58                                               
+                    FRAME     M8                  L61                 sum = dc.gcd(fa, fi);				// Semantics: this vs dc
+                    PUSH      L57                                                                   
+                    PUSH      L58                                                                   
+                    CALL      M8                                                                    
+                    PEEK      T141                                                                  
+                    MOV       T141                L59                                               
+                    WRITE     L59                                     cout << sum;                  
+                    WRITE     H65                                     cout << '=';                  
+                    WRITE     L57                                     cout << fa;						// Syntax: ) 
+                    WRITE     H66                                     cout << '%';                  
+                    WRITE     L58                                     cout << fi;                   
+                    WRITE     H63                                                                   
+LABEL15             WRITE     H62                                     //k = cin.nextInt();					// Semantics: cin
+                    READ      L55                                     cin >> k;                     
+                    WRITE     H63                                                                   
+                    JMP       LABEL7                                                                
+LABEL8              FRAME     M16                 L61                 cout << dc.inc(dc.inc(dc.fact(9)));
+                    PUSH      N67                                                                   
+                    CALL      M16                                                                   
+                    PEEK      T142                                                                  
+                    FRAME     M19                 L61                                               
+                    PUSH      T142                                                                  
+                    CALL      M19                                                                   
+                    PEEK      T143                                                                  
+                    FRAME     M19                 L61                                               
+                    PUSH      T143                                                                  
+                    CALL      M19                                                                   
+                    PEEK      T144                                                                  
+                    WRITE     T144                                                                  
+                    WRITE     H63                                                                   
+                    RTN                                               }                             

@@ -1,0 +1,5 @@
+Mouse {
+	Mouse(int a, int a) {}
+}
+
+void kxi2020 main() {}

@@ -1,0 +1,51 @@
+Who calls me? 
+	expression (this)
+	expression (identifier () )
+	expression (identifier [expression] )
+	expression ( ; )
+
+What is my job? 
+	pop SAR off the SAS.  Find out if it exists in the current symbol table scope (search in to out all the way to the top.) 
+
+	What checks do I need to do to make sure the top SAR exists in the current scope? 
+		expression (this)
+			Match lexeme
+			Make sure the current symbol table scope is inside a method or constructor (this does not exist at the class level g.<classname>)
+			make and push the sar
+
+		expression ( identifier () )
+			match lexeme
+			Match order, arity, and type of the parameters in the given argument list with a function in (or above) the current scope 
+
+		expression ( identifier [expression] )
+			match lexeme
+			Look in the symbol table in the current scope (or above) for a variable with an array type that has the same lexeme.  		
+
+		expression ( ; )
+			Match lexeme
+			Look in the symbol table in the current scope (and above) for a variable with the same lexeme that's a variable.  
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	token_sar, func_sar, or arr_sar.
+
+	what do I need from token_sar?
+		just the token that holds the identifier.   
+
+	What do I need from func_sar? 
+		argument_list sar
+		identifier token
+
+	what do I need from arr_sar?   
+
+What information do future semantic routines need to do their job? 
+
+what Sars to I push? 
+	id_sar (token and symid) 
+
+	for variable and array, we get what we need from the symbol table.  
+
+	for a function, the returnType is in the symbol table, accessed via the method's symid. 
+
+	for 'this', the symid is 'this', the token is the token that contains 'this'
+		We can get everything else we need in future semantic actions via the current scope in the symbol table.  
+

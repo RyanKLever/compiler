@@ -1,0 +1,31 @@
+Who calls me? 
+	EOE
+	return
+	cout
+	cin
+	closingParenthesis
+	closingSquareBracket
+	argument
+
+
+What is my job? 
+	pop two SARs off the SAS (B adn then A).  Test that B can be added to A.  Create a new symbol in the symbol table that represents the result of this operation.  Create a token that represents the temporary variable, Put symid and token into a new SAR and push that sar onto the SAS.  
+
+	What tests do I do to make sure A can be added to B? 
+		A and B sars need to have symids of symbols that have the type of int  
+
+What information (possibly from past semantic routines) do I need to do my job?
+	inside the two sars that I pop off the SAS, i need
+		symid
+		token - for the line number if a number happens 
+
+What information do future semantic routines need to do their job? 
+	symid - of new symbol we added to the symbol table representing the result of the operation.  
+
+	token - a fake one that represents the tempVar.  
+			lexeme = symid of tempVar in symbol table
+			tokenType = TEMP
+			lineNubmer = line number of the token that's inside the first sar we popped.  
+
+what Sars to I push? 
+	symid_sar (symid, token)

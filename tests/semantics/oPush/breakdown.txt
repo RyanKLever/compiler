@@ -1,0 +1,25 @@
+Who calls me? 
+	field_declaration (assignment op path)
+	variable_declaration (assignment op path)	
+	statement (if path)
+	statement (while path)
+	statement (switch path)
+	expression (parentheses open path)
+	fn_arr_member (parentheses begin path)
+	fn_arr_member (array begin path)
+	expressionZ (for each type of operator)
+	new_declaration (parentheses begin path)
+	new_declaration (array begin path)
+
+
+What is my job? 
+	pass the operator token to oPush.  oPush will push the token onto the Operator stack. 
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	just the operator token passed from the grammar rule. 
+
+What information do future semantic routines need to do their job? 
+	Any semantic action that evaluates operators will be popping this off the Operator stack.  
+
+what Sars to I push?
+	NONE 

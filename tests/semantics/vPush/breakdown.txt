@@ -1,0 +1,15 @@
+Who calls me? 
+	class_member_declaration
+	variable_declaration
+
+What is my job? 
+	Push a sar onto the SAS to indicate that a variable that was just declared exists. 
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	I need to get the symid of the variable we just parsed in the symbol table. There should be a SAR with a symid in it only that I can pop off the stack.   
+	
+What information do future semantic routines need to do their job? 
+	The SYMID of the variable i'm telling them exists. 
+
+what Sars to I push? 
+	symidSar

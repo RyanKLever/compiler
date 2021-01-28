@@ -1,0 +1,37 @@
+// Precedence Testing ***********************
+<<< >>> 
+=== !== ==! =!=
+=<= =>= >== <=<=
+and or int andint intand int3 3int
+
+
+// Comment Testing *************************
+// while(derp) { blah }
+//No Spaces
+// comment within // a comment
+
+
+// General symbol test
++-*/<<>>==!=<=>=<>=.,;:[{()}] 
+
+
+// Character Test 
+'\n' '\b'
+'''a''~' 
+'ab'
+'''
+'' 
+
+// Number and Identifier Test
+123 +10 -11 1.2 
+
+// identifier test
+a123 1a23 123a
+
+ 
+
+
+
+
+
+

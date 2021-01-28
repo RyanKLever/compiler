@@ -1,0 +1,18 @@
+Who calls me? 
+	new_declaration
+	fn_arr_member
+
+What is my job? 
+	OPTION 1 - Collect Symids (do this one for now)
+		while SAS is not BAL, pop topSar off, extract the symid and put it into a list.  once we hit BAL, put list into a new arglist Sar and push onto SAS
+	OPTION 2 - collect SARs
+		 while SAS is not BAL, pop topSar off, put it into a list.  once we hit BAL, put list into a new arglist Sar and push onto SAS
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	Evaluated epxpressions that are represented via iExist and rExist as symidSars (token, symid)
+
+What information do future semantic routines need to do their job? 
+	Will anything in the future ever need more than the token and symid? 
+
+what Sars to I push? 
+	arlistSAR (list of Symids)

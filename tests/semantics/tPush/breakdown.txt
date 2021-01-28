@@ -1,0 +1,106 @@
+tPush
+	What grammar path can call me? 
+		type
+			class_member_declaration
+				class_declaration
+					compilation_unit **
+
+			variable_declaration
+				method_body
+					compilation_unit **
+					field_declaration
+						class_member_declaration
+							class_member_declaration
+								class_declaration
+									compilation_unit **
+					constructor_declaration
+						class_member_declaration
+							class_declaration
+								compilation_unit **
+			
+			parameter
+				parameter_list
+					field_declaration
+						class_member_declaration
+							class_member_declaration
+								class_declaration
+									compilation_unit **
+					constructor_declaration
+						class_member_declaration
+							class_declaration
+								compilation_unit **
+			
+			assignment_expression
+				field_declaration
+					class_member_declaration
+						class_member_declaration
+							class_declaration
+								compilation_unit **
+				variable_declaration
+					method_body
+						compilation_unit **
+						field_declaration
+							class_member_declaration
+								class_member_declaration
+									class_declaration
+										compilation_unit **
+						constructor_declaration
+							class_member_declaration
+								class_declaration
+									compilation_unit **
+				expressionZ
+					expression
+						statement
+							case_block
+								statement o o o
+							case_label
+								case_block
+									statement o o o
+							method_body	
+								compilation_unit **
+								field_declaration
+									class_member_declaration
+										class_member_declaration
+											class_declaration
+												compilation_unit **
+								constructor_declaration
+									class_member_declaration
+										class_declaration
+											compilation_unit **
+							statement o o o
+						expression o o o
+
+						fn_arr_member
+							expression o o o
+							member_refz
+								expression o o o
+								member_refz o o o
+
+
+						argument_list
+							fn_arr_member
+								expression o o o
+								member_refz
+									expression o o o
+									member_refz o o o
+
+
+							new_declaration
+								assignment_expression o o o
+
+						expressionZ o o o
+
+						assignment_expression o o o
+
+						new_declaration
+							assignment_expression o o o
+
+
+	What do I need from past semantic routines to do my job?
+		NOTHING
+
+	What do future semantic actions need from me to do their job?
+		type_sar
+			token 
+
+	 

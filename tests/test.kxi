@@ -1,0 +1,373 @@
+class Dog {
+	// Empty Constructor
+	Dog() {}
+
+	// for recursive class calling
+	public Cat a; 
+	public Cat[] arrA;
+	public Cat funA() {}
+	public int integer = 1 + 3 - 6;  
+	public int fun1(int a, bool b, char c) {
+		a = 1 + 2; 
+		b = a < a; 
+
+		return a; 
+	}
+}
+
+class Cat {
+	Cat() {}
+
+	// for recursive class calling
+	public Mouse b; 
+	public Mouse[] arrB; 
+	public Mouse funB() {}
+}
+
+class Mouse {
+	Mouse() {}
+
+	// for recursive class calling
+	public Dog c; 
+	public Dog[] arrC;
+	public Dog funC() {}
+}
+
+// Empty Class
+class Bug {}
+
+class Cell {
+	// class_member_declaration: tExist, vPush
+	private int v1; 
+	private bool v2; 
+	private char v3; 
+	private Dog v4; 
+	private Cell vCell;
+
+	private int[] a1; 
+	private bool[] a2; 
+	private char[] a3; 
+	private Dog[] a4;
+	private Cell[] arrCell;  
+
+	private int fun1() {}
+	private bool fun2() {}
+	private char fun3() {}
+	private Dog fun4() {}
+	private void fun5() {}
+	private Cell funCell() {}
+
+	private int[] fun6() {}
+	private bool[] fun7() {}
+	private char[] fun8() {}
+	private Dog[] fun9() {}
+
+	public int v5; 
+	public bool v6; 
+	public char v7; 
+	public Dog v8; 
+
+	public int[] a5; 
+	public bool[] a6; 
+	public char[] a7; 
+	public Dog[] a8;
+
+	public int fun10() {}
+	public bool fun11() {}
+	public char fun12() {}
+	public void fun13() {}
+	public Dog fun14() {}
+
+	public int[] fun15() {}
+	public bool[] fun16() {}
+	public char[] fun17() {}
+	public Dog[] fun18() {}
+
+	public void paramExpressionTest(int a, bool b, char c) {}
+
+
+
+	// TESTING: rExist (inside class method) - with this tests and null tests
+	public int rExistTest() {
+		// Local variable
+		Dog v1;  
+
+		// rExist should use the ivar v1 instead of the lvar v1
+		this.v1 = 5; 
+
+		// Recursive Class Calling (Dog, Cat, Mouse, Dog, Cat...)
+		v8 = v4.a.b.c.a.b.c.funA().funB().funC().funA().funB().funC().arrA[1].arrB[1].arrC[1].arrA[1].arrB[1].arrC[1];
+
+		// Assignment statement with Complex References on both sides
+		v4.a.b.c.a.b.c.funA().funB().funC().arrA[1].arrB[1].arrC[1].a.b.c.a.b.c.funA().funB().funC().arrA[1].arrB[1].arrC[1].a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC() = v4.a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC();
+
+
+		// variable first
+		this.v1 = vCell.v5;			// variable second
+		this.a5 = vCell.a5;			// unindexed array second
+		this.v5 = vCell.a5[1];		// indexed array second
+		this.v1 = vCell.fun10();		// function call second
+
+
+		// reference array first
+		this.v1 = arrCell[1].v5;	// variable second
+		this.a5 = arrCell[1].a5;	// unindexed array second
+		this.v5 = arrCell[1].a5[1];	// indexed array second
+		this.v1 = arrCell[1].fun10();// function call second
+
+
+		// function first
+		this.v1 = funCell().v5;		// variable second
+		this.a5 = funCell().a5;		// unindexed array second
+		this.v5 = funCell().a5[1];	// indexed array second
+		this.v1 = funCell().fun10();	// function call second
+
+
+		// this first
+		this.v1 = this.v5;			// variable second
+		this.a5 = this.a5;			// unindexed array second
+		this.v5 = this.a5[1];		// indexed array second
+		this.v1 = this.fun10();		// function call second
+	}
+
+	// TESTING: iExist (inside class method)
+	public int iExistTest(int v7, int v8) {
+		// Local variables
+		Dog v5;
+		Dog v6; 
+
+		// iExist uses the local variables or parameters in this situation
+		v5 = v6; 
+		v7 = v8;
+
+		// iExist uses the instance variables in this situaion 
+		v1 = a1[1]; 
+		v2 = a2[1]; 
+		v3 = a3[1]; 
+		v4 = a4[1];
+		v1 = fun1(); 
+		v2 = fun2(); 
+		v3 = fun3(); 
+		v4 = fun4(); 
+		v1; 
+		a2; 
+		fun5();
+	}
+
+	// TESTING: return, operatorFunctionality
+	// return variable types
+	public int returnTest1() { return this.v1; } 
+	public bool returnTest2() { return this.v2; } 
+	public char returnTest3() { return this.v3; } 
+	public Dog returnTest4() { return this.v4; }
+
+	// return array types
+	public int[] returnTest5() { return this.a1; } 
+	public bool[] returnTest6() { return this.a2; } 
+	public char[] returnTest7() { return this.a3; } 
+	public Dog[] returnTest8() { return this.a4; }
+
+	// return same type using variable, indexed array, and function
+	public Dog returnTest9() { return this.v4; } 
+	public Dog returnTest10() { return this.a4[1]; } 
+	public Dog returnTest11() { return this.fun4(); } 
+
+	// return nothing
+	public void returnTest12() { return; } 
+	public Dog returnTest13() { return; }	
+
+	// return crazy expression that resolves to int
+	public int returnTest14() { 
+		return 1 + 2 - 3 * 4 / 5 + v1 - a1[1] * fun1() / 1 + 2 - 3 * 4 / 5 + v1 - a1[1] * fun1() / 1 + 2 - 3 * 4 / 5 + v1 - a1[1] * fun1() / 1 + 2 - 3 * 4 / 5 + v1 - a1[1] * fun1(); 
+	}
+
+	// return crazy expression that resolves to bool
+	public bool returnTest15() { 
+		return ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b')) == ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b')); 
+	}
+}
+
+// TESTING: EAL, BAL
+class Args {
+	
+	// constructor with lots of params
+	Args(
+		int pv1, bool pv2, char pv3, sym pv4, Dog pv5, int[] pa1, bool[] pa2, char[] pa3, sym[] pa4, Dog[] pa5, int pv6, bool pv7, char pv8, sym pv9, Dog pv10, int[] pa6, bool[] pa7, char[] pa8, sym[] pa9, Dog[] pa10
+	) {
+
+	}
+
+	public void fun1(Cell a, sym b, sym[] c) {
+
+		// Constructor Call with lots of params
+		Args theNewArg = new Args(
+			a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8, a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8
+		);
+
+		// Function Call with lots of params
+		fun2(
+			a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8, a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8
+		);
+	
+	}
+
+	// Function with lots of params
+	public void fun2(
+		int pv1, bool pv2, char pv3, sym pv4, Dog pv5, int[] pa1, bool[] pa2, char[] pa3, sym[] pa4, Dog[] pa5, int pv6, bool pv7, char pv8, sym pv9, Dog pv10, int[] pa6, bool[] pa7, char[] pa8, sym[] pa9, Dog[] pa10
+	) { 
+
+	}
+}
+
+
+void kxi2020 main() {
+	// complex stuff from above, but now in the main
+	Cell theCell; 
+	Cell a;  
+	sym b; 
+	sym[] c; 
+	int d;  
+
+	Dog theDog = new Dog();
+	Dog[] arrDog = new Dog[5]; 
+
+	// Constructor Call with lots of params
+	Args theArgs = new Args(a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8, a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8);
+
+
+
+
+	// this = d; 
+	// d = this; 
+
+
+
+
+
+	// Function Call with lots of params
+	theArgs.fun2(a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8, a.v5, a.v6, a.v7, b, a.v8, a.a5, a.a6, a.a7, c, a.a8);
+
+	// Recursive Class Calling (Dog, Cat, Mouse, Dog, Cat...)
+	theCell.v8 = theCell.v8.a.b.c.a.b.c.funA().funB().funC().funA().funB().funC().arrA[1].arrB[1].arrC[1].arrA[1].arrB[1].arrC[1];
+
+	// Assignment statement with Complex References on both sides
+	theCell.v8.a.b.c.a.b.c.funA().funB().funC().arrA[1].arrB[1].arrC[1].a.b.c.a.b.c.funA().funB().funC().arrA[1].arrB[1].arrC[1].a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC() = theCell.v8.a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC().a.b.c.a.b.c.arrA[1].arrB[1].arrC[1].funA().funB().funC();
+
+
+	// IF crazy expression that resolves to bool
+	if (
+		((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b')) == ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b'))
+	) {
+
+	}
+
+	// WHILE crazy expression that resolves to bool
+	while (
+		((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b')) == ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b'))
+	) {
+
+	}
+
+
+	// COUT crazy expression that resolves to int
+	cout << 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10();
+
+	// COUT char
+	cout << 'a'; 
+
+	// CIN crazy expression that resolves to int
+	cin >> 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10();
+
+	// CIN char
+	cin >> 'a';
+
+	// index an array with crazy expression that resolves to int
+	theCell.a5[
+		1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10()
+	];
+
+	// create a new array with crazy expression that resolves to int
+	theCell.a5 = new int[
+		1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10()
+	];
+
+	// call a function with crazy expressions as the parameters
+	theCell.paramExpressionTest(
+		1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10() / 1 + 2 - 3 * 4 / 5 + theCell.v5 - theCell.a5[1] * theCell.fun10(), 
+		(((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b')) == ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b') or (1 <= 2) and ('a' >= 'b'))), 
+		'a'
+	);
+
+	// NESTED GNARLY STATEMENTS
+	while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+		while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+			while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+				while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+					while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+						while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+						
+						}
+					}
+				}
+			}
+		}
+
+		if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+			if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+				if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+					if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+						if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+						
+						}
+					}
+				}
+			}
+		}
+
+		if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+			while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+				if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+					while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+						if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+							if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+								while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+									while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+										if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+											if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+												if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+													while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+														while ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+															if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+																if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+																	if ((1 < 2) and ('a' < 'b') or (1 <= 2) and ('a' >= 'b') and ('a' < 'b')) {
+																	
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	d = theDog.fun1(1, true, 'c');
+
+	theDog.integer; 
+
+
+}
+
+
+
+
+

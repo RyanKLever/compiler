@@ -1,0 +1,20 @@
+Who calls me? 
+	new_declaration
+	if
+	while
+	switch
+	expression ((expression) path)
+	fn_arr_member (function call path)
+
+What is my job? 
+	while there are operators on the OS, pop operators off the OS, call the operator function for it. 
+	When out of operators (when we hit the opening parenthesis on the stack), we're done. 
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	operators and operands we need to evaluate 
+
+What information do future semantic routines need to do their job? 
+	NONE
+
+what Sars to I push? 
+	NONE

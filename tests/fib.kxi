@@ -1,0 +1,54 @@
+class Dog {
+	Dog() {
+
+	}
+
+	public int fib(int n) {
+
+		int n1 = 1; 
+		int n2 = 1; 
+		int temp; 
+
+		cout << n1; 
+		cout << '\n';
+		cout << n2; 
+		cout << '\n';
+
+		while (n > 0) {
+			temp = n2; 
+			n2 = n2 + n1; 
+			n1 = temp;
+
+			cout << n2; 
+			cout << '\n';
+
+			n = n - 1;  
+		}
+	}
+
+	public int fibRec(int n1, int n2, int n) {
+		int res1; 
+
+		cout << n1;
+		cout << '\n';
+
+		if (n <= 1) {
+			return 0;
+		}
+
+		fibRec(n2, n1 + n2, n - 1);
+	}
+}
+
+
+
+void kxi2020 main() {
+	Dog a; 
+
+	a.fibRec(1, 1, 45);
+
+	cout << 'A';
+	cout << 'D';
+	cout << 'A';
+	cout << 'M';
+}

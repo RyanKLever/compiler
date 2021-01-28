@@ -1,0 +1,27 @@
+Who calls me? 
+	EOE
+	not sure if it's anything else. 
+
+What is my job? 
+	pop two SARs off the SAS (first pop B and then one A). Test that B can be assigned to A.  
+
+	What tests to I do to make sure A can be assigned B? 
+		A and B need to have symids of symbols that have the same type
+
+		A cannot be a constant
+			this, null, true, false, character literal, numeric literal
+
+		We don't have to find
+			A can't be a function
+			A can't be an expression expression  (x + y)
+
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	symid 
+	token
+
+What information do future semantic routines need to do their job? 
+	NONE
+
+what Sars to I push? 
+	NONE - we don't allow nested assignment statements

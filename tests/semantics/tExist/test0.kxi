@@ -1,0 +1,16 @@
+class Dog {
+	public Dog a;
+	public Dog a(Dog a) {
+		Dog a;
+	}
+
+}
+
+void kxi2020 main() {
+	Dog a; 
+	int a; 
+
+	a = a; 
+
+
+}

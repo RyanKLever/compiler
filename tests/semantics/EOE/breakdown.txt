@@ -1,0 +1,41 @@
+Who calls me? 
+	field_declaration
+		non-method, no assignment, and yes assignment path. 
+	variable_declaration
+		after the semicolon
+	statement
+		expression path, after the semicolon
+
+What is my job? 
+	pop operators off the OS, pop top two SARs off SAS and test if the popped operation can be performed on two two top SARs. 
+
+	What allows for two SARs to be operated on each other? 
+		It depends on the operation.  
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	Symids of the two top operands
+
+	If I evaluate two top operands, I need to put the result of that back on the SAS because EOE might need it.  I'll need to to create a temporary variable in the Symbol Table, put the symid of that temp var in a SAR and place that sar on the stack 
+		UNTIL we get a simple "x = y" like expression.  
+		Then, we just make sure y can be assigned to x
+	When there are no more operators on the stack, EOE's job is done.  
+
+What information do future semantic routines need to do their job? 
+
+what Sars to I push? 
+
+
+Operators to handle
++
+-
+*
+/
+=
+<
+>
+==
+<=
+>=
+and
+or
+!=

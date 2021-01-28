@@ -1,0 +1,17 @@
+class Mouse {
+	public int a; 
+	public int a() {
+
+	}
+}
+
+class Dog {
+	private Dog b() {
+	
+	}
+	public int x; 
+}
+
+void kxi2020 main() {
+
+}

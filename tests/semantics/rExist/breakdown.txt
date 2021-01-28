@@ -1,0 +1,333 @@
+Who calls me? 
+	member_refz
+
+	semantic actions that come directly before it: 
+		#func
+			arglits, token
+		#arr
+			expression, token
+		#ipush
+			token
+
+		and there will ALWAYS have been an iPush and iExist for a this, var, arr, func before this.  
+
+What is my job? 
+	*** Conceptual Explenation ***
+	Determine if a reference to a class's member 'exists', in other words, make sure what we're trying to reference in a class instance actually exists.  
+
+	*** Step by Step ***
+	Pop B_sar off SAS.  Pop A off SAS. (B and A could be a variable, a function invocation, or an array reference.)  Test that B is a PUBLIC member of the class whos type is A's type.   
+
+	What checks do I need to do to make sure that B is a public member of A? 
+		Pop A_sar
+		Pop B_sar
+
+		A_sar represents a variable
+			B_sar represents a variable
+				get A_sar's symid
+				get A_symid's type from symbol table.  
+				get B_sar's token
+				find a variable in the symbol table whos 
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					accessModifier is public
+					whos type does NOT start with '@'
+				if we don't find one, ERROR
+				if we find one, 
+					create a temporary variable in symbol table representing the reference
+						theType = B_symbol's type
+						lexeme = generate one (T)
+					create a token representing the reference
+						lexeme == symid of temporary variable
+					Create a SAR with the symid and token.  
+					Push the SAR to SAS.  
+
+			B_sar represents a array reference 
+				get A_sar's symid, 
+				get A_symid's type from the symbol table. 
+				get B_sar's token
+				find an array reference in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					whos type starts with '@'
+				if we don't find one, ERRROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType = B_symbol's type
+						lexeme = generate one (T)
+					create a token representing the reference
+						lexeme == symid of temp var
+					Create a sar with symid and token
+					Push the SAR onto SAS
+
+			B_sar represents a function invocation
+				get A_sar's symid
+				get A_symid's type from the symbol table
+				get B_sar's token
+				find a function in the symbol table whos 
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					returnType != null
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType = B_symbol's RETURN TYPE
+						lexeme = generate one (T)
+					create a token representing the reference
+						lexeme == symid of the temp var
+					Create a sar with the symid and token
+					PUsh the sar onto the SAS
+
+			B_sar represents a 'this'
+				I believe this is an ERROR
+				you can't reference a this from a class type
+
+
+		A_sar represents a array reference 
+			B_sar represents a variable
+				get A_sar's symid
+				get A_sar's type from the symbol table
+					Change the type from it's array form into it's singular variable form. 
+				get B_sar's token
+				find a variable in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					whos type does not start with '@'
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's type
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+			B_sar represents a array reference 
+				get A_sar's symid
+				get A_sar's type from the symbol table
+					Change the type from it's array form into it's singular variable form.
+				get B_sar's token
+				find an array reference in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					whos type starts with '@'
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's type
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+			B_sar represents a function invocation
+				get A_sar's symid
+				get A_sar's type from the symbol table
+					Change the type from it's array form into it's singular variable form.
+				get B_sar's token
+				find a function in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					whos returnType != null
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's RETURN TYPE
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+			B_sar represents a 'this'
+				ERROR
+
+		A_sar represents a function invocation
+			B_sar represents a variable
+				get A_sar's symid
+				get A_sar's RETURN TYPE from the symbol table
+					set theType we'll check against to this RETURN TYPE
+				get B_sar's token
+				find a variable in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					whos type does not start with '@'
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's type
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+			B_sar represents a array reference 
+				get A_sar's symid
+				get A_sar's RETURN TYPE from the symbol table
+					set theType we'll check against to this RETURN TYPE
+				get B_sar's token
+				find an array reference in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					whos type starts with '@'
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's type
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+
+			B_sar represents a function invocation
+				get A_sar's symid
+				get A_sar's RETURN TYPE from the symbol table
+					set theType we'll check against to this RETURN TYPE
+				get B_sar's token
+				find a function in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier is public
+					whos returnType != null
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's RETURN TYPE
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+
+			B_sar represents a 'this'
+				ERROR
+
+		A_sar represents a 'this'
+			B_sar represents a variable
+				get A_sar's type
+					it's type is found in the current scope. 
+					pop the scope twice, the type is what popped off the second time.   
+				get B_sar's token
+				find a variable in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier DOES NOT NEED TO BE PUBLIC
+					whos type does not start with '@'
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's type
+						lexeme == generate one (T)
+					create a token representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+			B_sar represents a array reference 
+				get A_sar's type
+					it's type is found in the current scope. 
+					pop the scope twice, the type is what popped off the second time.   
+				get B_sar's token
+				find an array reference in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier DOES NOT NEED TO BE PUBLIC
+					whos type starts with '@'
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's type
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+			B_sar represents a function invocation
+				get A_sar's type
+					it's type is found in the current scope. 
+					pop the scope twice, the type is what popped off the second time.   
+				get B_sar's token
+				find a function in the symbol table whos
+					lexeme matches B_sar's token's lexeme
+					scope is g.<A_symbol's type>
+					access Modifier DOES NOT NEED TO BE PUBLIC
+					whos returnType != null
+				if we don't find one, ERROR
+				if we find one
+					create a temporary variable in the symbol table representing the reference
+						theType == B_symbol's RETURN TYPE
+						lexeme == generate one (T)
+					create a tokken representing the reference
+						lexeme = symid of temporary variable
+					create a SAR with the symid and token
+					push the sar onto the SAS
+
+			B_sar represents a 'this'
+				ERROR
+
+
+
+
+
+	How do I know when... (remember, As have been through iExist, while Bs have just finished iPush, func, or arr)
+		A_sar represents 'this'
+			symid inside the sar == 'this'
+
+		A_sar represents a variable
+			symid pulls a symbol out of the symbol table whos 
+				theType[0] does not start with '@' 
+
+		A_sar represents an array reference
+			symid pulls a symbol out of the symbol table whos
+				theType[0] starts with '@'
+
+		A_sar represents a function call
+			symid pulls a symbol out of the symbol table whos
+				kind is in ['method']
+
+		B_sar represents 'this'
+			lexeme inside the identifier token == 'this'
+
+		B_sar represents a variable 
+			if the sar has the keys 
+				'token' 
+				'createdByRoutine'
+				and the lexeme does not equal 'this'
+
+		B_sar represents an array reference
+			if the sar has the keys 
+				'token'
+				'expressionSymid' 
+				'createdByRoutine'
+
+		B_sar represents a function call
+			if the sar has the keys
+				'token'
+				'arglist'
+				'createdByRoutine'
+
+
+	NOTES:
+		B_sar will always at the least be carrying a token that represents a var, func, or arr 
+
+
+
+What information (possibly from past semantic routines) do I need to do my job? 
+
+What information do future semantic routines need to do their job? 
+
+what Sars to I push? 

@@ -1,0 +1,35 @@
+class Dog {
+	public int[] a; 
+	public int y; 
+	public Dog fun() {
+
+	}
+	public Dog fail() {
+		// this first
+		this.a[1]; 
+		this.y; 
+		this.fun();
+
+		// function first
+		fun().a[1]; 
+		fun().y; 
+		fun().fail();
+	}
+}
+
+void kxi2020 main() {
+	Dog a; 
+	Dog[] b; 
+
+	int a; 
+
+	// variable first
+	a.y; 
+	a.a[1];
+	a.fun();
+
+	// array reference first
+	b[1].y; 
+	b[1].a[1];
+	b[1].fun();
+}

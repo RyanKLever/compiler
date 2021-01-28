@@ -1,0 +1,13 @@
+class Dog {
+	Dog(int x, bool y) {}
+}
+
+void kxi2020 main() {
+	Dog x = new Dog(1, true);
+	Dog[] y = new Dog[4]; 
+}
+
+
+
+
+

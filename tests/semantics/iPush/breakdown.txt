@@ -1,0 +1,16 @@
+Who calls me? 
+	expression (this)
+	expression (identifier () )
+	expression (identifier [expression] )
+	expression ( ; )
+	member_refz
+
+What is my job? 
+	for each of the places where iPush can get called, we just pass in a token to iPush. Smoosh the token into a SAR and push the sar onto the SAS.  
+
+What information (possibly from past semantic routines) do I need to do my job? 
+
+What information do future semantic routines need to do their job? 
+
+what Sars to I push? 
+	token_sar(token)

@@ -1,0 +1,21 @@
+Who calls me? 
+	class_declaration
+	class_member_declaration
+	constructor_declaration
+	variable_declaration
+	parameter
+
+What information from past semantic routines do I need to do my job? 
+	class name token
+	function name token
+	constructor name token
+	function passed parameter name token
+	constructor passed parameter name token
+	local variable name token
+	instance variable name token
+	
+What information do future semantic routines need to do their job? 
+	if class_member_declaration or variable_declaration called me, I need to push the symid we found onto the SAS so vPush can know what symid to Push.  
+
+What sars do I push? 
+	SAR(symid)

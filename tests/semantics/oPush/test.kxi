@@ -1,0 +1,33 @@
+class Mouse {
+	public int a = a; 
+}
+
+void kxi2020 main() {
+	int a = 6; 
+	int b = new int();
+	int c = new int[a];
+
+
+	a = a; 
+	a and a; 
+	a or a; 
+	a == a; 
+	a != a; 
+	a <= a; 
+	a >= a; 
+	a < a; 
+	a > a; 
+	a + a; 
+	a - a; 
+	a * a; 
+	a / a; 
+
+	if (a) {}
+	while (a) {}
+	switch (a) { default: a; }
+
+	(a);
+
+	a();
+	a[a];
+}

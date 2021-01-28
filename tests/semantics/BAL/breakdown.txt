@@ -1,0 +1,17 @@
+Who calls me? 
+	fn_arr_member
+	new_declaration
+
+What is my job? 
+	a placemarker to know when the beginning of the argument list has been reached when doing the shunting yard algorithm.  
+
+What information (possibly from past semantic routines) do I need to do my job? 
+	NONE
+
+What information do future semantic routines need to do their job? 
+	Whoever uses this will be able to tell this is a balSar by 
+	checking the createdByRoutine attribute in this SAR instance. 
+	it will be the only attribute. 
+
+what Sars to I push? 
+	balSar - an empty sar.  

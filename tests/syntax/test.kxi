@@ -1,0 +1,244 @@
+class Dog {
+	
+}
+
+class B1rd {
+	public int[] a; 
+}
+
+class Cat {
+	// TESTING: 
+	// class_member_declaration
+	// field_declaration
+	// constructor_declaration
+	// method_body
+	// parameter_list and parameter
+
+	// multiple constructors
+	// constructors of different names
+	// constructor with nothing in the body
+	// constructor with no parameters
+	// constructor with one parameter
+	// constructor with all possible kinds of parameters
+	// constructor with no variable decs or statements in method body
+	// constructor with no variable decs and one statement in method body
+	// constructor with one variable dec and no statements in method body
+	// constructor with many variable decs and statemetns in method body
+
+	Cat() {}
+	Wag() {}
+	Cat(int a) {}
+	Cat(int a, char a, bool a, void a, sym a, Dog a) {}
+	Cat(int[] a, char[] a, bool[] a, void[] a, sym[] a, Dog[] a) {}
+	Cat() {
+		{}
+	}
+
+	Cat() {
+		int a; 
+	}
+
+	Cat() {
+		int a; 
+		{}
+	}
+
+	Cat() {
+		// TESTING variable_declaration
+		// TESTING assignment_expression
+		// TESTING new_declaration
+
+		int a; 
+		char a; 
+		bool a; 
+		void a; 
+		sym a; 
+		Dog a; 
+		int[] a; 
+		char[] a; 
+		bool[] a; 
+		void[] a; 
+		sym[] a; 
+		Dog[] DOG; 
+		int a = true;
+		int a = new Dog();
+		int a = new Dog(b, b, b);
+		int a = new Dog[a];
+	}
+
+	public int a;
+	private int a; 
+	public int a = a; 
+	public int a = new a[a]; 
+	public int[] a; 
+
+	public int a() {}
+	public int[] a() {}
+	public int a(int[] a, char[] a, bool[] a, void[] a, sym[] a, Dog[] a) {}
+	public int a(int a, char a, bool a, void a, sym a, Dog a) {}
+	public int zzzzzzz(int a, char a, bool a, void a, sym a, Dog a, int[] a, char[] a, bool[] a, void[] a, sym[] a, Dog[] a) {}	
+}
+
+void kxi2020 main () {
+	int zzz; 
+
+	// statement
+	{}
+	{{{{}}}}
+	if(true) if(true) if(true) {}
+	if(a) {}
+	if(a) {} else {}
+	while(a) break;
+	return; 
+	return 'b'; 
+	cout << a; 
+	cin >> a; 
+	switch(a){default:a;}
+	switch(a){case 1: a; case 2: b; default: c; }
+	break; 
+
+	// expression and expressionz
+	(a);
+	true; 
+	false; 
+	null; 
+	this;
+	x;
+	(a) and true;
+	true and false; 
+	false and this; 
+	null and null; 
+	this and this.a;
+	1 and 'a'; 
+	'a' and a; 
+	a() and a[a];
+	a().a;
+	a[a] and b; 
+	a[a].b and c;  
+
+
+
+	// assignment_expression and new_declaration
+	a=new int();
+	a=new Dog(true);
+	a=new int(true, false, null, a);
+	a=new int[a];
+	a=new int[a().b and false];
+
+	// numeric and character literals
+	a('a', 'a', 'b', 6, +6, -6, 7); 
+
+
+	// gnarly expressions
+	x=y+q-e*t/y<u<=i>o>=p and z or x==b;
+
+	(true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a;
+
+	if ((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) break;
+
+	while ((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+		(true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a;
+	}
+
+	return (true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a;
+
+	cout << (true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a;
+
+	cin >> (true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a; 
+
+	switch((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+		case 'a': 
+			(true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a;
+		default: 
+			(true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a;
+	}
+
+
+
+	// nested conditional statements
+
+	if ((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+
+		if(false) {
+
+			if((true or false or null or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and 
+				z or x==b].bark[a + b].doggo(a <= b / c - 6).leash().a) {
+				
+				while((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+
+					switch(((6 and 'a'))) {
+						case 'a': switch(a){case 1: a; case 2: b; default: c; }
+						case 6: switch(a){case 1: a; case 2: b; default: c; }
+						case +5: if (a) { 
+							while(a) {
+								if ((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+
+									if(false) {
+
+										if((true or false or null or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and 
+											z or x==b].bark[a + b].doggo(a <= b / c - 6).leash().a) {
+											
+											while((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+											
+												switch(((6 and 'a'))) {
+													case 'a': switch(a){case 1: a; case 2: b; default: c; }
+													case 6: switch(a){case 1: a; case 2: b; default: c; }
+													case +5: if (a) { while(a) z; }
+													case 7: {
+														if ((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+
+															if(false) {
+
+																if((true or false or null or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and 
+																	z or x==b].bark[a + b].doggo(a <= b / c - 6).leash().a) {
+																	
+																	while((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+																	
+																		switch(((6 and 'a'))) {
+																			case 'a': switch(a){case 1: a; case 2: b; default: c; }
+																			case 6: switch(a){case 1: a; case 2: b; default: c; }
+																			case +5: if (a) { while(a) z; }
+																			default: {}
+																		}
+																	}
+																} else {
+																	if ((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+
+																		if(false) {
+
+																			if((true or false or null or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and 
+																				z or x==b].bark[a + b].doggo(a <= b / c - 6).leash().a) {
+																				
+																				while((true or false or null or this or 'a' or 6 or apple) and a[y+q-e*t/y<u<=i>o>=p and z or x==b].bark[a + b].doggo(y+q-e*t/y<u<=i>o>=p and z or x==b, y+q-e*t/y<u<=i>o>=p and z or x==b).leash().a) {
+																				
+																					switch(((6 and 'a'))) {
+																						case 'a': switch(a){case 1: a; case 2: b; default: c; }
+																						case 6: switch(a){case 1: a; case 2: b; default: c; }
+																						case +5: if (a) { while(a) z; }
+																						default: {}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+													default: {}
+												}
+											}
+										}
+									}
+								}
+							} 
+
+						}
+						default: {}
+					}
+				}
+			}
+		}
+	}
+}	 
+

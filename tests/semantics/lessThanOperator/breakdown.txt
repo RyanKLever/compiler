@@ -1,0 +1,31 @@
+Who calls me? 
+	EOE
+
+What is my job? 
+	pop B_sar from SAS.  pop A_sar from SAS. 
+	Test that A can be tested as less than B. 
+	If no error, 
+	Create a new symbol table entry that represents the result of this operation.  
+		The type will be true or false!
+	Create a new SAR that contains
+		token - newly created one to represent the temporary variable
+		symid - the symid of the temporary variable that is now in the symbol table.  
+	push the new SAR onto the SAS
+
+	what tests do I need to do to make sure A can be tested as less than B? 
+		== and !=
+			Must work for all datatypes
+			A must be the same type as B
+
+		< > <= >=
+			only works for int and char types
+
+			!!! DESIGN CHOICE !!!
+			these guys can work if A is int and B is a char, or vice verse
+
+	
+What information (possibly from past semantic routines) do I need to do my job? 
+
+What information do future semantic routines need to do their job? 
+
+what Sars to I push? 
