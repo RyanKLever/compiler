@@ -1,25 +1,11 @@
 ***** What To Do ************************************************
-error messages 
-	make sure you are reporting the correct thing. 
-	reporting new variable declarations erroneously. 
-		12
-		96
-		should be the same error on both sides ii[] = ii[];
+[x] Virtual Machine
+[x] Lexer/Parser
+[x] Syntax
+[x] Semantics
+[x] icode
+[x] tcode - DONE!
 
-
-
-***** WHERE I LEFT OFF ******************************************
-
-
-
-
-**** QUESTIONS ****************************************************
-
-May I pass off C version now and a higher version later? 
-	I would be willing to take a failed attempt 
-
-
-**** BUGS *********************************************************
 
 
 
